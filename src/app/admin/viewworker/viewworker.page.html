@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+   <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Worker Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="danger">
+  <ion-card color="light" >
+
+    <ion-list *ngFor="let j of workerslist">
+
+      <ion-item>
+        <ion-text>
+          Job name:{{ j.job_category }}
+         
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        Job starting time:{{ j.job_start_time | date:'shortTime'}}
+        
+      </ion-item>
+      <ion-item>
+        Job ending time:{{ j.job_end_time | date:'shortTime' }}
+       
+      </ion-item>
+      <ion-item>
+        Expected salary:{{ j.job_salary }}
+        
+      </ion-item>
+      <ion-item>
+        Job verification:{{ j.job_verification }}
+        
+      </ion-item>
+      <ion-item>
+        <img src="{{ j.job_document }}">
+        
+      </ion-item>
+      <ion-item>
+        Job Description:{{ j.job_description }}
+      </ion-item>
+      <ion-card *ngFor="let r of review">
+   
+        <ion-item>
+          <ion-avatar slot="start">
+            <img src="{{r.userdetails[0].profile_pic}}">
+          </ion-avatar>
+          <ion-label><b>{{r.userdetails[0].name}}</b></ion-label>
+        </ion-item>
+        <ion-item>
+          {{r.star}}<ion-icon name="star" color="warning"></ion-icon>
+          
+        </ion-item>
+        <ion-item>
+          <ion-text>{{r.commend}}</ion-text>
+        </ion-item>
+    
+      </ion-card>
+    </ion-list>
+       <ion-card>
+         <ion-item>
+          <ion-button (click)="disable()">Disable Account</ion-button>
+         </ion-item>
+         <ion-item>
+          <ion-button (click)="activate()">Activate Account</ion-button>
+           
+         </ion-item>
+         <ion-item>
+          <ion-button (click)="reject()">Delete Account</ion-button>
+           
+         </ion-item>
+         
+       </ion-card>
+       
+  
+  </ion-card>
+  
+</ion-content>
+
+
